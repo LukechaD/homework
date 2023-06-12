@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+  </head>
+  <body>
+    <!-- Умова
+    
+      Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у
+      формі таблиці
+     -->
+    <script>
+      // Дійсні числа
+      let realNum1 = 7;
+      let realNum2 = 3.6;
+
+      // Знаходимо суму, добуток та частку
+      let add = realNum1 + realNum2;
+      let mult = realNum1 * realNum2;
+      let div = realNum1 / realNum2;
+
+      // Виводимо в табличку
+      document.write("<table><tr><th>Дія</th><th>Результат</th></tr>");
+      document.write("<tr><td>Сума</td><td>" + add + "</td></tr>");
+      document.write("<tr><td>Добуток</td><td>" + mult + "</td></tr>");
+      document.write(
+        "<tr><td>Частка</td><td>" + div.toFixed(3) + "</td></tr></table>"
+      );
+    </script>
+  </body>
+</html>

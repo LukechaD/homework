@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task7</title>
+  </head>
+  <body>
+    <!-- Умова
+    Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).-->
+
+    <script>
+      // Задаю змінні номерам місяця і дня
+      let minMonth = 1;
+      let maxMonth = 12;
+      let minDay = 0;
+      let maxDay = 6;
+
+      // Задаю змінні для рандомних чисел
+      // Знаходжу рандомне число місяця
+      // Знаходжу рандомне число дня
+      // Знаходжу їх суму
+
+      let randomMonth = minMonth + Math.floor(Math.random() * maxMonth);
+      let randomDay = Math.floor(Math.random() * maxDay);
+      let sumDate = randomMonth + randomDay;
+      document.write(`Рандомний місяць від 1-12 = ${randomMonth}</br>`);
+      document.write(`Рандомний день від 0-6 = ${randomDay}</br>`);
+      document.write(`Сума рандомних дня і місяця = ${sumDate}</br>`);
+    </script>
+  </body>
+</html>

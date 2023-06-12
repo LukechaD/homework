@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task0</title>
+  </head>
+  <body>
+    <!-- Умова -->
+    <!-- Обчислити значення виразів -->
+    <script>
+      let a = 1;
+      let b = 2;
+      let c = 3;
+
+      // 1) S1=a+12+b
+      let s1 = a + 12 + b;
+      document.write(`1) S1 = ${s1}</br>`);
+
+      // 2) S2 = √(a+b/2a)
+      let s2 = Math.sqrt(((a + b) / 2) * a);
+      document.write(`2) S2 = ${s2.toFixed(3)}</br>`);
+
+      // 3) S3 = 3√(a+b)c
+      let s3 = Math.cbrt((a + b) * c);
+      document.write(`3) S3 = ${s3.toFixed(3)}</br>`);
+
+      // 4) S4 = sin(a/-b)
+      let s4 = Math.sin(a / -b);
+      document.write(`4) S4 = ${s4.toFixed(3)}</br>`);
+    </script>
+  </body>
+</html>
