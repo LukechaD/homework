@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+  </head>
+  <body>
+    <script>
+      // Умова
+      // З клавіатури вводяться імена двох дітей та кількість у них цукерок.
+      // Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або
+      // вивести, що кількість однакова. -->
+
+      //  Крок 0. Позначення величин
+      // ім’я 1 дитини - nameChild1
+      // ім’я 2 дитини - nameChild2
+      // Кількість цукерок 1 дитини - candyCount1
+      // Кількість цукерок 2 дитини - candyCount2
+
+      // Крок 1. Введення величин
+      let nameChild1 = prompt("Введіть ім'я першої дитини");
+      let candyCount1 = prompt(
+        `Введіть кількість цукерок ${nameChild1} (першої дитини)`
+      );
+      let nameChild2 = prompt("Введіть ім'я другої дитини");
+      let candyCount2 = prompt(
+        `Введіть кількість цукерок ${nameChild2} (другої дитини)`
+      );
+
+      //Крок 2. Розв"язок задачі
+      //Якщо candyCount1 > candyCount2
+      //тоді показуємо nameChild1
+      //Якщо candyCount2 > candyCount1
+      //тоді показуємо nameChild2
+      //Якщо candiesChild1 === candiesChild2 або всі інші значення
+      //тоді показуємо що кількість одинакова
+
+      if (candyCount1 > candyCount2) {
+        alert(`більше у ${nameChild1} (первої дитини)`);
+      } else if (candyCount2 > candyCount1) {
+        alert(`Більше у ${nameChild2} (другої дитини)`);
+      } else {
+        alert(
+          `Кількість цукерок у ${nameChild1} (первої дитини) та у ${nameChild2} (другої дитини) однакова`
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task5</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Умова
+        З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий
+      автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного
+      засобу, яким він може керувати*/
+
+      //Крок 0. Позначення велечик
+      //я розвяжу це завдання методом switch і тому тут потрібна лише одна величина
+      // Категорія - category
+
+      //Крок 1. Введення величин
+      let category = prompt(
+        "Введіть категорію водія - A, B, C або D:"
+      ).toLowerCase();
+
+      switch (category) {
+        case "a":
+          alert("Мотоцикл");
+          break;
+        case "b":
+          alert("Автомобіль");
+          break;
+        case "c":
+          alert("Вантажний автомобіль");
+          break;
+        case "d":
+          alert("Автобус");
+          break;
+        default:
+          alert("Ви ввели не правильну категорію.");
+      }
+    </script>
+  </body>
+</html>

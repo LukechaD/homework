@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task3</title>
+  </head>
+  <body>
+    <script>
+      //Умова
+      //Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+
+      // Крок 0. Позначення величин
+      // Число яке ми генеруємо - numberRandom
+      // Число яке вводить користувач - numberUser
+
+      // Крок 1. Введення величин
+      let numberRandom;
+      let numberUser;
+
+      // Крок 2. Розвязання задачі
+
+      numberRandom = Math.floor(Math.random() * 5) + 1;
+      numberUser = prompt(`Вгадайте число від 1 до 5. За дві спроби:`);
+
+      if (numberUser == numberRandom) {
+        alert(`Ви вгадали число!!!${numberRandom}`);
+        //Як зробити так щоб коли виконувалася ця умова інші умови вже не
+        //розглядалися? Бо в результаті виходить так що якщо число вгадали з першого
+        //разу то всерівно дає ще одну спробу
+      } else {
+        numberUser = prompt(`Ви не вгадали. Спробуйте ще раз:`);
+      }
+      if (numberUser == numberRandom) {
+        alert(`Вітаємо ви вгадали число!!! ${numberRandom}`);
+      } else {
+        alert(`Нажаль ви не вгадали`);
+      }
+    </script>
+  </body>
+</html>

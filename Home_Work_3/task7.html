@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task7</title>
+  </head>
+  <body>
+    <script>
+      /*Умова
+   З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься*/
+
+      // Крок 0. назва величин
+      //Номер місяця - monthNumber
+      // Зима , Весна , Літо , Осінь ми не будемо з них робити змінні а виведемо через alert
+
+      //Крок 1. Введення величин
+      let monthNumber = parseInt(
+        prompt("Введіть номер місяця щоб дізнатися яка пора року:")
+      );
+
+      //Крок 2. Розвязок
+      if ((monthNumber >= 1 && monthNumber <= 2) || monthNumber === 12) {
+        //Я так розумію дужки поставив Pretier тому що всерівно спочатку виконається оперант &&
+        alert("Зима");
+      } else if (monthNumber >= 3 && monthNumber <= 5) {
+        alert("Весна");
+      } else if (monthNumber >= 6 && monthNumber <= 8) {
+        alert("Літо");
+      } else if (monthNumber >= 9 && monthNumber <= 11) {
+        alert("Осінь");
+      } else {
+        alert("ви не коректно ввели номер місяця");
+      }
+    </script>
+  </body>
+</html>
