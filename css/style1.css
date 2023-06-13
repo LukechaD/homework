@@ -1,44 +1,48 @@
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+}
 
-.title h1{
-   font-size: 50px;
+.title {
+  text-align: center;
+  margin-top: 50px;
 }
-.dmytro{
-   position: relative;
+
+h1 {
+  font-size: 5rem;
+  letter-spacing: 0.5rem;
+  color: #f00;
 }
-footer{
-   position: fixed;
-   height: auto;
-   bottom: 0;
-   width: 100%;
-   font-size: 30px;
-   font-style: italic;
-   color: #1b2028;
-   background-color:#6a8b6f ;
+
+.link {
+  margin-top: 100px;
 }
-.title{
-   height: 15%;
-   text-align: center;
-   background-color: #6a8b6f;
-   padding: 30px;
+
+table {
+  margin-left: auto;
+  margin-right: auto;
 }
-.link{
-   position: relative;
-   height: 100%;
-   background-color:#b7b1a3;
+
+th {
+  padding: 20px;
 }
-.link table{
-   position: absolute;
-   top: 20%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-}
+
 a {
-   text-decoration: none;
-   color: #30636d;
- }
-
-h2{
-   font-size: 30px;
-   height: 45px;
+  color: #fff;
 }
- 
+
+a:hover {
+  color: #f00;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.dmytro {
+  font-size: 1rem;
+}
