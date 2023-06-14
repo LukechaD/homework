@@ -15,27 +15,21 @@
       // Число яке вводить користувач - numberUser
 
       // Крок 1. Введення величин
-      let numberRandom;
-      let numberUser;
+      const numberRandom = Math.floor(Math.random() * 5) + 1;
+      let numberUser = parseInt(
+        prompt("Вгадайте число від 1 до 5. За дві спроби:")
+      );
 
       // Крок 2. Розвязання задачі
-
-      numberRandom = Math.floor(Math.random() * 5) + 1;
-      numberUser = prompt(`Вгадайте число від 1 до 5. За дві спроби:`);
-
-      if (numberUser == numberRandom) {
+      if (numberUser === numberRandom) {
         alert(`Ви вгадали число!!!${numberRandom}`);
-        //Як зробити так щоб коли виконувалася ця умова інші умови вже не
-        //розглядалися? Бо в результаті виходить так що якщо число вгадали з першого
-        //разу то всерівно дає ще одну спробу
       } else {
-        numberUser = prompt(`Ви не вгадали. Спробуйте ще раз:`);
+        numberUser = parseInt(prompt("Ви не вгадали. Спробуйте ще раз:"));
+        if (numberUser === numberRandom)
+          alert(`Вітаємо ви вгадали число!!! ${numberRandom}`);
+        else alert("Нажаль ви не вгадали");
       }
-      if (numberUser == numberRandom) {
-        alert(`Вітаємо ви вгадали число!!! ${numberRandom}`);
-      } else {
-        alert(`Нажаль ви не вгадали`);
-      }
+      // Кінець
     </script>
   </body>
 </html>
