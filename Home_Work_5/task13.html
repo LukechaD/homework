@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task13</title>
+  </head>
+  <body>
+    <script>
+      //Задача 13
+      //Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M.
+      //Маючи К снарядів користувач намагається потопити корабель.
+
+      //Вводимо позначення
+      //рядки поля - row, стовпчики - column, снаряди - bomb
+      const row = 5;
+      const column = 5;
+      const bomb = 5;
+
+      //Розташування коробля на полі(випадкове)
+      const shipRow = Math.floor(Math.random() * row) + 1;
+      const shipColumn = Math.floor(Math.random() * column) + 1;
+
+      //Цикл для пострілів в нашому випадку 5
+      for (let i = 0; i < bomb; i++) {
+        //отримання координат пострілів
+        let rowUser = parseInt(prompt(`Введіть номер рядка від 1 - ${row}`));
+        let columnUser = parseInt(
+          prompt(`Введіть номер рядка від 1 - ${column}`)
+        );
+
+        //Перевірка чи потопили корабель
+        if (rowUser === shipRow && columnUser === shipColumn) {
+          alert("Москва на дні!!!");
+          break;
+        } else alert("Ви промахнулись");
+      }
+    </script>
+  </body>
+</html>
