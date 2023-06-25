@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task4</title>
+  </head>
+  <body>
+    <script>
+      //Задача 4
+      //На екрані виводиться меню:
+      // 	1.Ініціалізація (сума=0)
+      // 	2.Додати 2
+      // 	3.Додати 3
+      // 	4.Відняти 2
+      // 	5.Відняти 3.
+      // 	6.Вивести суму
+      // 	7.Вихід.
+      // Шляхом поступового вибору відповідних пунктів спробувати отримати число N, яке вводиться з клавіатури.
+
+      let menuMathActions = 0;
+      let result = 0;
+      let userNumber = parseInt(prompt("Введіть ціле число"));
+
+      while (menuMathActions != 7) {
+        menuMathActions = parseInt(
+          prompt(`спробуйте отримати число ${userNumber}
+          Введіть пункт меню:
+      1.Ініціалізація (сума=0)
+      2.Додати 2
+      3.Додати 3
+      4.Відняти 2
+      5.Відняти 3.
+      6.Вивести суму
+      7.Вихід.`)
+        );
+        switch (menuMathActions) {
+          case 1:
+            result = 0;
+            break;
+          case 2:
+            result += 2;
+            break;
+          case 3:
+            result += 3;
+            break;
+          case 4:
+            result -= 2;
+            break;
+          case 5:
+            result -= 3;
+            break;
+          case 6:
+            alert(result);
+            break;
+          case 7:
+            alert("Вихід");
+            break;
+          default:
+            alert("Введений неправильний пункт меню");
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

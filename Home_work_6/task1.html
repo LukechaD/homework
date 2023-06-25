@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+  </head>
+  <body>
+    <script>
+      //Задача1
+      //З клавіатури поступово вводяться символи поки не буде введено символ «а». Вивести рядок символів у зворотному порядку.
+      let userInputChar = "";
+      let reverseString = "";
+
+      do {
+        userInputChar = prompt('Введіть символ (для завершення введіть "a"):');
+        if (userInputChar !== "a") {
+          reverseString = userInputChar + reverseString;
+        }
+      } while (userInputChar !== "a");
+
+      document.write("Результат:", reverseString);
+    </script>
+  </body>
+</html>

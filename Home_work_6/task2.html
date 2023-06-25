@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task2</title>
+  </head>
+  <body>
+    <script>
+      //Задача 2
+      //З клавіатури вводиться початкове знчення суми. Поки сума є меншою за 100 додавати
+      // до неї числа, які вводяться з клавіатури.
+      let countSum = 0;
+
+      while (countSum < 100) {
+        let inputSum = parseFloat(prompt("Введіть значення суми"));
+        countSum += inputSum;
+        document.write(`${inputSum}+`);
+      }
+
+      document.write(
+        `Загальна сума ${countSum}<br> Сума перевищила 100 на ${
+          countSum - 100
+        }<br>Далі додавання не буде`
+      );
+    </script>
+  </body>
+</html>
