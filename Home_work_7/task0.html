@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task0</title>
+  </head>
+  <body>
+    <script>
+      // Задача 0
+      // Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+      function getSeason(month) {
+        if (month === 12 || month < 3) {
+          return "Winter";
+        }
+        if (month <= 5) {
+          return "Spring";
+        } else if (month <= 8) {
+          return "summer";
+        } else if (month <= 11) {
+          return "autumn";
+        } else {
+          return "Month number entered incorrectly";
+        }
+      }
+      let getNumberMonth = parseInt(prompt("Введіть номер місяця:"));
+      let showSeason = getSeason(getNumberMonth);
+      alert(`It is ${showSeason}`);
+    </script>
+  </body>
+</html>

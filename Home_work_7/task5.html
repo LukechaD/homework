@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task5</title>
+  </head>
+  <body>
+    <script>
+      //Задача 5
+      //Створити окремі функції, які переводять:
+      //1)	Сантиметри у дюйми;
+      //2)	Кілограми у фунти;
+      //3)	Кілометри у милі.
+
+      function getCmToInches(cm) {
+        return cm / 2.54;
+      }
+      function getKgToPounds(kg) {
+        return kg * 2.20462;
+      }
+      function getKmToMiles(km) {
+        return km / 1.60934;
+      }
+      let inputUserCm = parseFloat(
+        prompt("Введіть кількість сантиметрів які хочете конвертувати в дюйми")
+      );
+      let inputUserKg = parseFloat(
+        prompt("Введіть кількість кілограм які хочете конвертувати в фунти")
+      );
+      let inputUserKm = parseFloat(
+        prompt("Введіть кількість кілометрів які хочете конвертувати в милі")
+      );
+      let inches = getCmToInches(inputUserCm);
+      let pounds = getKgToPounds(inputUserKg);
+      let mile = getKmToMiles(inputUserKm);
+      document.write(
+        `${inputUserCm}см = ${inches}дюймів<br>
+        ${inputUserKg}кг = ${pounds}фунтів<br>
+        ${inputUserKm}км = ${mile}миль`
+      );
+    </script>
+  </body>
+</html>

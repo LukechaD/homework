@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task2</title>
+  </head>
+  <body>
+    <script>
+      //Задача
+      //Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+      function getWeekend() {
+        let resultDay = "";
+        let inputUserDay = parseInt(prompt("Введіть номер дня:"));
+        if (inputUserDay >= 1 && inputUserDay <= 5) {
+          resultDay += "Це робочий день";
+        } else if (inputUserDay >= 5 && inputUserDay <= 7) {
+          resultDay += "Це вихідний";
+        } else {
+          resultDay += "Не правильно введиний номер дня";
+        }
+        return resultDay;
+      }
+      let outputDay = getWeekend();
+      document.write(outputDay);
+    </script>
+  </body>
+</html>
