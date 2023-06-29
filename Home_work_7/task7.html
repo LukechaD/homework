@@ -12,7 +12,7 @@
       //(шляхи до зображень передаються у функцію)
       function getRandomImage() {
         let randomIndexImage = Math.floor(Math.random() * 4) + 1;
-        let img = `<img src=/img/${randomIndexImage}.png>`;
+        let img = `<img src=img/${randomIndexImage}.png>`;
         return img;
       }
       let outputImg = getRandomImage();
