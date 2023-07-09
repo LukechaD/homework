@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task5</title>
+  </head>
+  <body>
+    <script>
+      //Задача 5.
+      //Дано послідовність оцінок учня. Підрахувати кількість:
+      // 1)	двійок
+      // 2)	кількість хороших оцінок (добре, відмінно);
+      // 3)	кількість оцінок, які нижче середнього.
+      
+      //Функція яка запитує масив оцінок учня
+      function getArrValueStudents(countValue) {
+         let arrValueStudents = [];
+         for (let i = 0; i < countValue; i++) {
+            let inputValueStudents = parseInt(
+               prompt(`Введіть оцінку №[${i + 1}]:`)
+               );
+               arrValueStudents.push(inputValueStudents);
+            }
+            return arrValueStudents;
+         }
+         //виклик функцій
+         let arrValue = getArrValueStudents(5);
+         
+         //я не створював окремі функції а зразу робив цикли
+      let countTwos = 0;
+      let countGoodMarks = 0;
+      let countBelowAverageMarks = 0;
+      let sumOfMarks = 0;
+
+      //цикл який порахує оцінки
+      for (let i = 0; i < arrValue.length; i++) {
+        switch (arrValue[i]) {
+          case 2:
+            countTwos++;
+            break;
+          case 4:
+          case 5:
+            countGoodMarks++;
+            break;
+          default:
+            break;
+        }
+        sumOfMarks += arrValue[i];
+      }
+
+      //середній бал
+      const averageMark = sumOfMarks / arrValue.length;
+
+      //цикл який порахує бал нижче середнього
+      for (let i = 0; i < arrValue.length; i++) {
+        arrValue[i] < averageMark
+          ? countBelowAverageMarks++
+          : countBelowAverageMarks;
+      }
+
+
+      //виводимо на екран
+      document.write(`1) двійок - ${countTwos}<br>
+      2)	кількість хороших оцінок (добре, відмінно) - ${countGoodMarks}
+      <br>
+      3)	кількість оцінок, які нижче середнього - ${countBelowAverageMarks}
+      `);
+    </script>
+  </body>
+</html>

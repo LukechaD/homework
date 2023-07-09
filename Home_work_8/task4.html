@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task4</title>
+  </head>
+  <body>
+    <script>
+      // Задача 4.
+      //    Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+      // •	починаються на букву «А»;
+      // •	перша і остання літери співпадають;
+      // •	складаються з більше ніш 5 символів;
+      //[ао7575оа, ре8969ер, ао5656ре, іе6523уе, во6321уе]
+
+      //Функція яка запитує масив номерних знаків
+      function getArrCarNumber(countCarNum) {
+        let arrCarNumber = [];
+        for (let i = 0; i < countCarNum; i++) {
+          let inputCarNumber = prompt(
+            `Введіть автомобільний номер [${i + 1}]`
+          ).toLowerCase();
+          arrCarNumber.push(inputCarNumber);
+        }
+        return arrCarNumber;
+      }
+
+      //Функція підрахування (починаються на букву «А»)
+      function getCountStartSymbolA(resultArrCarNumber) {
+        let countStartSymbolA = 0;
+        for (let i = 0; i < resultArrCarNumber.length; i++) {
+          resultArrCarNumber[i][0] === "а"
+            ? countStartSymbolA++
+            : countStartSymbolA;
+        }
+        return countStartSymbolA;
+      }
+
+      //Функція яка підрахує (перша і остання літери співпадають)
+      function getFirstAndLastSymbol(resultArrCarNumber) {
+        let countFirstAndLastSymbol = 0;
+        for (let i = 0; i < resultArrCarNumber.length; i++) {
+          resultArrCarNumber[i][0] ===
+          resultArrCarNumber[i][resultArrCarNumber[i].length - 1]
+            ? countFirstAndLastSymbol++
+            : countFirstAndLastSymbol;
+        }
+        return countFirstAndLastSymbol;
+      }
+
+      //Функція яка порахує більше 5 символів в елементі масиву
+      function getCountMoreThanFiveChars(resultArrCarNumber) {
+        let countMoreThanFiveChars = 0;
+        for (let i = 0; i < resultArrCarNumber.length; i++) {
+          resultArrCarNumber[i].length > 5
+            ? countMoreThanFiveChars++
+            : countMoreThanFiveChars;
+        }
+        return countMoreThanFiveChars;
+      }
+
+      //виклик функцій
+      let resultArrCarNumber = getArrCarNumber(5);
+      let resultCountStartSymbolA = getCountStartSymbolA(resultArrCarNumber);
+      let resultCountFirstAndLastSymbol =
+        getFirstAndLastSymbol(resultArrCarNumber);
+      let resultCountMoreThanFiveChars =
+        getCountMoreThanFiveChars(resultArrCarNumber);
+
+      //виводимо на екран
+      document.write(
+        `Номерних знаків із символами що починаються на А = ${resultCountStartSymbolA}<br>
+        Номерних знаків де перша і остання літери співпадають = ${resultCountFirstAndLastSymbol}<br>
+        Номерних знаків де більше 5 символів = ${resultCountMoreThanFiveChars}`
+      );
+    </script>
+  </body>
+</html>
