@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task5</title>
+  </head>
+  <body>
+    <script>
+      //Задача 5
+      //Дано масив елементів. Знайти добуток додатних елементів
+      let arr = [5, -5, 1, -6, 3, 6, 8, 4, -6];
+      let product = 1;
+      for (const iterator of arr) {
+        if (iterator > 0) {
+          product *= iterator;
+        }
+      }
+      document.write(product);
+    </script>
+  </body>
+</html>

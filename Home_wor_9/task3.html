@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task3</title>
+  </head>
+  <body>
+    <script>
+      //Здача 3.
+      //Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.
+      let userCountElement = parseInt(prompt("Введіть кількість елементів:"));
+      let arr = new Array(userCountElement).fill(1, 0, 5);
+      arr.fill(7, 5);
+      document.write(arr);
+    </script>
+  </body>
+</html>
