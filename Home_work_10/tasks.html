@@ -36,7 +36,7 @@
 
       //3)Сформувати список з тих цін, які більші за попереднє значення
 
-      const moreThanPrevious = [];
+      let moreThanPrevious = [];
 
       for (let i = 0; i < arrPrices.length; i++) {
         if (arrPrices[i] > 0 && arrPrices[i] > arrPrices[i - 1]) {
@@ -49,10 +49,11 @@
       //================================================================================
 
       //4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
-      const maxPrice = arrPrices.reduce((prevSum, el) => Math.max(prevSum, el));
-      const arrPercent = arrPrices.map((price) => (price / maxPrice) * 100);
+      let maxPrice = arrPrices.reduce((prevSum, el) => Math.max(prevSum, el));
+      let arrPercent = arrPrices.map((price) => (price / maxPrice) * 100);
+      let arrPercentResult = arrPercent.map((num) => num.toFixed(2));
       document.write(
-        `4) значення цін у відсотках стосовно максимального елемента = [${arrPercent}] <br>`
+        `4) значення цін у відсотках стосовно максимального елемента = [${arrPercentResult}] <br>`
       );
       //=========================================================================================
 
