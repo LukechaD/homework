@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+      h1 {
+        text-align: center;
+        color: black;
+      }
+      h2 {
+        color: rgba(95, 54, 54, 0.635);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Задача 1.</h1>
+    <h2>Знайти суми елементів у вказаній області</h2>
+    <script>
+      //              Задача 1.
+      //Знайти суми елементів у вказаній області
+
+      let rows = 4;
+      let cols = 4;
+      // Функція генерування двохвимірного масиву з рандомними числами від 0-100
+      function generate2DArray(rows, cols) {
+        let arr = new Array(rows);
+        for (let i = 0; i < rows; i++) {
+          arr[i] = new Array(cols);
+          for (let j = 0; j < cols; j++) {
+            arr[i][j] = Math.floor(Math.random() * 101);
+          }
+        }
+        return arr;
+      }
+
+      let arr = generate2DArray(rows, cols); //Змінна для виклику масива
+
+      //Показ масива
+      let writeArr = JSON.stringify(arr);
+      let writeTableArr = document.write(`
+            Двовимірний масив - ${writeArr}<br>
+            `);
+      //Функція яка яка зробить двохвимірний масив у вигляді таблиці
+      function drawTable(array) {
+        document.write(`<br>Двовимірний масив у вигляді таблиці<br><table>`);
+
+        for (let i = 0; i < array.length; i++) {
+          document.write("<tr>");
+          for (let j = 0; j < array[i].length; j++) {
+            document.write("<td>" + array[i][j] + "</td>");
+          }
+          document.write("</tr>");
+        }
+        document.write("</table>");
+      }
+      let tableArr = drawTable(arr);
+      //==========================================================================================================================
+
+      //1)Знайти суму елементів у першій області
+      let sumFirstArea = (arr) => {
+        let sum = 0;
+        for (let i = 0; i < 2; i++) {
+          for (let j = 0; j < 2; j++) {
+            sum += arr[i][j];
+          }
+        }
+        return sum;
+      }; //arr[0][0] + arr[0][1] + arr[1][0] + arr[1][1]
+      //==========================================================================================================================
+
+      //2)Знайти суму елементів у другій області
+      let sumTwoArea = (arr) => {
+        let sum = 0;
+        for (let i = 0; i < 2; i++) {
+          for (let j = 2; j < arr.length; j++) {
+            sum += arr[i][j];
+          }
+        }
+        return sum;
+      }; //arr[0][2] + arr[0][3] + arr[1][2] + arr[1][3]
+      //==========================================================================================================================
+
+      //3)Знайти суму елементів у третій області
+      let sumThreeArea = (arr) => {
+        let sum = 0;
+        for (let i = 2; i < arr.length; i++) {
+          for (let j = 0; j < 2; j++) {
+            sum += arr[i][j];
+          }
+        }
+        return sum;
+      }; //arr[2][0] + arr[2][1] + arr[3][0] + arr[3][1]
+      //==========================================================================================================================
+
+      //4)Знайти суму елементів у четвертій області
+      let sumFourArea = (arr) => {
+        let sum = 0;
+        for (let i = 2; i < arr.length; i++) {
+          for (let j = 2; j < arr.length; j++) {
+            sum += arr[i][j];
+          }
+        }
+        return sum;
+      }; //arr[2][2] + arr[2][3] + arr[3][2] + arr[3][3]
+      //==========================================================================================================================
+
+      //5)Сума парних рядвків
+      let sumEvenString = arr.reduce((acc, curr, index) => {
+        if (index % 2 === 0) {
+          return acc + curr.flat().reduce((a, c) => a + c);
+        } else {
+          return acc;
+        }
+      }, 0);
+      //==========================================================================================================================
+
+      //6)Сума не парних стовпців (Краще напишіть з використанням циклів (і передважити крок +=2 де треба). Тоді і читабельність краща, і працювати буде швидше)
+      let sumOddCol = (arr) => {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 1; j < arr.length; j += 2) {
+            sum += arr[i][j];
+          }
+        }
+        return sum;
+      };
+      //==========================================================================================================================
+      //7) У парних рядках – непарні стовпці, у непарних – парні.
+      let sumOddEven = (arr) => {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          let startColIndex;
+          if (i % 2 == 0) {
+            startColIndex = 1;
+          } else startColIndex = 0;
+          for (let j = startColIndex; j < arr[0].length; j += 2) {
+            sum += arr[i][j];
+          }
+        }
+        return sum;
+      };
+      //==========================================================================================================================
+
+      // Виводимо результати
+      document.write(`
+      1) Сума першої облісті = ${sumFirstArea(arr)}<br>
+      2) Сума другої облісті = ${sumTwoArea(arr)}<br>
+      3) Сума третьої облісті = ${sumThreeArea(arr)}<br>
+      4) Сума четвертої облісті = ${sumFourArea(arr)}<br>
+      5) Сума парних рядків = ${sumEvenString}<br>
+      6) Сума не парних стовпців = ${sumOddCol(arr)}<br>
+      7) У парних рядках – непарні стовпці, у непарних – парні = ${sumOddEven(
+        arr
+      )}<br>
+      //==========================================================================================================================
+      //==========================================================================================================================
+<br>
+      `);
+    </script>
+
+    <h1>Задача 2.</h1>
+    <h2>Дано інформацію про прибуток К магазинів протягом тижня.</h2>
+
+    <script>
+      //          Задача 2.
+      //Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+
+      let shops = 5;
+      const week = 7;
+      //Функція генерації масива з магазинами з прибутком протягом тижня
+      function arrShopSurplusWithinWeek(shops, week) {
+        let arr = new Array(shops);
+        for (let i = 0; i < shops; i++) {
+          arr[i] = new Array(week);
+          for (let j = 0; j < week; j++) {
+            arr[i][j] = Math.floor(Math.random() * 5001);
+          }
+        }
+        return arr;
+      }
+
+      let arrShopsAndSurplus = arrShopSurplusWithinWeek(shops, week); //змінна для виклику масива прибутку 5тьох магазинів за тиждень
+
+      let jsonArrShopsAndSurplus = JSON.stringify(arrShopsAndSurplus);
+      //виводимо масив
+      document.write(`
+                              Двовимірний масив 5 магазинів з прибутками за тиждень<br>
+                              ${jsonArrShopsAndSurplus}<br>
+                              `);
+      //виводимо масив у виді таблиці з функцією яку ми створили в першій задачі.
+      let tableArrShopsAndSurplus = drawTable(arrShopsAndSurplus);
+      //==============================================================================================================================================
+
+      //1) загальний прибуток кожного масиву за тиждень
+      function getCalculateSumsShopsForWeek(arrShopsAndSurplus) {
+        let sums = arrShopsAndSurplus.map((shop) =>
+          shop.reduce((acc, curr) => acc + curr, 0)
+        );
+        return sums;
+      }
+      let resultCalculateSumsShopsForWeek =
+        getCalculateSumsShopsForWeek(arrShopsAndSurplus); //Змінна для результата загальний прибуток кожного масиву за тиждень
+      //==============================================================================================================================================
+
+      //2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+
+      function getCalculateProfitShopsForEveryDay(arrShopsAndSurplus) {
+        let sumsCol = [];
+
+        for (let j = 0; j < week; j++) {
+          let sum = 0;
+          for (let i = 0; i < shops; i++) {
+            sum += arrShopsAndSurplus[i][j];
+          }
+          sumsCol.push(sum);
+        }
+
+        return sumsCol;
+      }
+
+      let resultCalculateProfitShopsForEveryDay =
+        getCalculateProfitShopsForEveryDay(arrShopsAndSurplus);
+      //==============================================================================================================================================
+
+      //3) загальний прибуток за робочі дні
+      //Функція яка повертає масив кожного магазина з доходами за робочі дні
+      function getTotalProfitOfStoreForWorkingDays(arrShopsAndSurplus) {
+        let arrTotalProfitsPerStores = [];
+        for (let i = 0; i < arrShopsAndSurplus.length; i++) {
+          let workDayStoreProfit = 0;
+
+          for (let j = 0; j < 5; j++) {
+            workDayStoreProfit += arrShopsAndSurplus[i][j];
+          }
+
+          arrTotalProfitsPerStores.push(workDayStoreProfit);
+        }
+
+        return arrTotalProfitsPerStores;
+      }
+      //Сума за робочі дні кожного магазина окремо
+      let resultProfitOfStoreForWorkingDays =
+        getTotalProfitOfStoreForWorkingDays(arrShopsAndSurplus);
+      //Загальна сума за робочі дні
+      let resultTotalProfitOfStoresForWorkingDays =
+        resultProfitOfStoreForWorkingDays.reduce(
+          (total, profitOfStores) => (total += profitOfStores)
+        );
+
+      //==============================================================================================================================================
+      //4) загальний прибуток за вихідні дні
+      function getTotalWeekendProfitStore(arrShopsAndSurplus) {
+        let arrTotalWeekendProfitStores = [];
+        for (let i = 0; i < arrShopsAndSurplus.length; i++) {
+          let weekendProfitStore = 0;
+          for (let j = 5; j < 7; j++) {
+            weekendProfitStore += arrShopsAndSurplus[i][j];
+          }
+          arrTotalWeekendProfitStores.push(weekendProfitStore);
+        }
+        return arrTotalWeekendProfitStores;
+      }
+      //Сума за вихідні кожного магазина окремо
+      let resultWeekendProfitStore =
+        getTotalWeekendProfitStore(arrShopsAndSurplus);
+      //Загальна сума за вихідні
+      let resultTotalWeekendProfitStores = resultWeekendProfitStore.reduce(
+        (total, profitOfStores) => (total += profitOfStores)
+      );
+      //==============================================================================================================================================
+
+      //5) максимальний прибуток за середу
+      function getFindMaxProfitForWednesday(arrShopsAndSurplus) {
+        let maxProfit = -Infinity;
+
+        for (let i = 0; i < arrShopsAndSurplus.length; i++) {
+          if (arrShopsAndSurplus[i][2] > maxProfit) {
+            maxProfit = arrShopsAndSurplus[i][2];
+          }
+        }
+
+        return maxProfit;
+      }
+      //Виклик функції масимального числа за середу
+      let resultMaxProfitForWednesday =
+        getFindMaxProfitForWednesday(arrShopsAndSurplus);
+      //==============================================================================================================================================
+
+      //6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+      function getValuesGreaterThan200(arrShopsAndSurplus) {
+        let flattenedArray = arrShopsAndSurplus.flat();
+        let flattenedArrayGreaterThan200 = flattenedArray.filter(
+          (value) => value > 200
+        );
+        return flattenedArrayGreaterThan200;
+      }
+
+      //Виклик функції які що більші за 200
+      let resultgetValuesGreaterThan200 =
+        getValuesGreaterThan200(arrShopsAndSurplus);
+
+      //==============================================================================================================================================
+
+      //7) відсортувати кожен тиждень за зростанням
+      //Я так зрозумів що потрібно прибуток кожного масива за ТИЖДЕНЬ сортувати від меншого меншого до більшого
+      let resultArrWeeksAscending = [
+        ...resultCalculateProfitShopsForEveryDay, //масив який я вже створював раніше в Задача 2 (2 завдання)
+      ].sort((a, b) => a - b);
+      //==============================================================================================================================================
+
+      //8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку),
+      //тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+
+      function getSortRowDeclineForMaxElements(arrShopsAndSurplus) {
+        //Copy arr
+        let copyArrShopsAndSurplus = JSON.parse(
+          JSON.stringify(arrShopsAndSurplus)
+        );
+        //Створюємо масив з максимальними числами з попереднього масива
+        let maxRowsElements = copyArrShopsAndSurplus.map((row) =>
+          Math.max(...row)
+        );
+
+        const lastPrevElentIndex = maxRowsElements.length - 2;
+        for (let i = 0; i <= lastPrevElentIndex; i++) {
+          let maxIndex = i;
+          for (let j = i + 1; j < maxRowsElements.length; j++) {
+            if (maxRowsElements[j] > maxRowsElements[maxIndex]) maxIndex = j;
+          }
+          if (maxIndex !== i) {
+            let temp = maxRowsElements[i];
+            maxRowsElements[i] = maxRowsElements[maxIndex];
+            maxRowsElements[maxIndex] = temp;
+
+            let tempRow = copyArrShopsAndSurplus[i];
+            copyArrShopsAndSurplus[i] = copyArrShopsAndSurplus[maxIndex];
+            copyArrShopsAndSurplus[maxIndex] = tempRow;
+          }
+        }
+        return copyArrShopsAndSurplus;
+      }
+      //Виклик функції
+      let sortRowDeclineForMaxElements =
+        getSortRowDeclineForMaxElements(arrShopsAndSurplus);
+
+      //==============================================================================================================================================
+      //9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку
+      //(тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+
+      //Функція сортування за зменшенням суми елесентів у рядку.
+      function getSortByWeekSumDescending(arrShopsAndSurplus) {
+        //arr Copy
+        let copyArrShopsAndSurplus = JSON.parse(
+          JSON.stringify(arrShopsAndSurplus)
+        );
+
+        let sortedArr = copyArrShopsAndSurplus.sort((sumRowA, sumRowB) => {
+          let sumA = sumRowA.reduce((acc, val) => acc + val, 0); //Максимальне первого рядка
+          let sumB = sumRowB.reduce((acc, val) => acc + val, 0); //Максимальне другого рядка
+          return sumB - sumA; //Порівняння
+        });
+        return sortedArr;
+      }
+      //Виклик функції
+      let resultSortByWeekSumDescending =
+        getSortByWeekSumDescending(arrShopsAndSurplus);
+
+      //==============================================================================================================================================
+
+      document.write(`
+      1) Загальний прибуток кожного масиву за тиждень = ${resultCalculateSumsShopsForWeek}<br>
+      2) Загальний прибуток усіх магазинів по дням = ${resultCalculateProfitShopsForEveryDay}<br>
+      3) Прибуток кожного магазина за робочі дні = ${resultProfitOfStoreForWorkingDays}<br>
+        - Загальний прибуток всіх магазинів за робочі дні = ${resultTotalProfitOfStoresForWorkingDays}<br>
+      4) Прибуток за вихідні дні кожного магазина = ${resultWeekendProfitStore}<br>
+        - Загальний прибуток всіх магазинів за вихідні дні = ${resultTotalWeekendProfitStores}<br>
+      5) Максимальний прибуток за середу = ${resultMaxProfitForWednesday}<br>
+      6) Cформувати загальний список (одновимірний масив) зі значенням, які що більші за 200 = ${resultgetValuesGreaterThan200}<br>
+      7) Кожен тиждень за зростанням ${resultArrWeeksAscending}<br>
+      8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку),<br>
+      тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків =
+      `);
+      drawTable(sortRowDeclineForMaxElements);
+      document.write(`
+      9)Упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків
+      і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше)
+      `);
+      drawTable(resultSortByWeekSumDescending);
+    </script>
+  </body>
+</html>
