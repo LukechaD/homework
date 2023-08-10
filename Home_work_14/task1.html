@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+  </head>
+  <body>
+    <script>
+      /*Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+      ----- Властивості ------
+      -	назва компанії на час розробки (назву періодично змінюють)
+      -	власник компанії
+      -	споснсори (масив спонсорів)
+                   * прізвище спонсора
+            * ім’я  спонсора
+            * сума вкладень спонсора
+      -	рік випуску
+      -	вартість сайту
+      */
+      let websites = [
+        {
+          companyName: "L-Tech corp.",
+          companyOwner: "Robert Wilson",
+          sponsors: [
+            {
+              lastName: "Walker",
+              firstName: "Christopher ",
+              amountInvestment: 7000,
+            },
+            {
+              lastName: "Peterson",
+              firstName: "Jacob ",
+              amountInvestment: 4000,
+            },
+            {
+              lastName: "Wilson",
+              firstName: "Julia ",
+              amountInvestment: 3500,
+            },
+          ],
+          yearOfRelease: 2005,
+          costOfTheSite: 10000,
+        },
+
+        {
+          companyName: "FreeDobby corp.",
+          companyOwner: "Shawn Piers",
+          sponsors: [
+            {
+              lastName: "Granger",
+              firstName: "Hermione ",
+              amountInvestment: 700,
+            },
+            {
+              lastName: "Potter",
+              firstName: "Harry",
+              amountInvestment: 4300,
+            },
+            {
+              lastName: "Dumbledore",
+              firstName: "Albus ",
+              amountInvestment: 300,
+            },
+          ],
+          yearOfRelease: 2008,
+          costOfTheSite: 900,
+        },
+
+        {
+          companyName: "The Lord of the Rings",
+          companyOwner: "J. R. R. Tolkien",
+          sponsors: [
+            {
+              lastName: "Baggins",
+              firstName: "Frodo ",
+              amountInvestment: 2600,
+            },
+            {
+              lastName: "Gamgee",
+              firstName: "Samwise",
+              amountInvestment: 4500,
+            },
+            {
+              lastName: "Took",
+              firstName: "Peregrin",
+              amountInvestment: 9300,
+            },
+          ],
+          yearOfRelease: 2000,
+          costOfTheSite: 11000,
+        },
+      ];
+
+      //============================================================================================================
+      // Знайти
+      //1) загальну вартість усіх сайтів
+      const totalCostAllWebsites = websites.reduce(
+        (acc, website) => acc + website.costOfTheSite,
+        0
+      );
+      //============================================================================================================
+      //2)кількість сайтів, що було зроблено між 2000 та 2009 рр.
+      const countWebsitesReleasedBegin2000Add2009 = websites.reduce(
+        (countWeb, website) => {
+          if (website.yearOfRelease >= 2000 && website.yearOfRelease <= 2099) {
+            countWeb++;
+          }
+          return countWeb;
+        },
+        0
+      );
+      //============================================================================================================
+
+      //3)кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+      const countWebsitesWhereAmountOfInvestmentsMore10000 = websites.filter(
+        (website) =>
+          website.sponsors.reduce(
+            (totalInvestment, sponsor) =>
+              totalInvestment + sponsor.amountInvestment,
+            0
+          ) > 10000
+      ).length;
+      //============================================================================================================
+      //4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+      const allSponsors = websites.flatMap((website) => website.sponsors);
+
+      const sponsorData = allSponsors.map((sponsor) =>
+        JSON.stringify(sponsor, null, 2)
+      );
+
+      //============================================================================================================
+      //5) знайти рік, коли прибуток був найбільшим
+      const yearWhenProdWasMax = (websites) => {
+        let maxCost = -1;
+        let maxYear = -1;
+        for (let i = 0; i < websites.length; i++) {
+          if (websites[i].costOfTheSite > maxCost) {
+            maxCost = websites[i].costOfTheSite;
+            maxYear = websites[i].yearOfRelease;
+          }
+        }
+        return maxYear;
+      };
+
+      //============================================================================================================
+      //6) упорядкувати список за спаданням прибутку
+      const sortArrDeclineProfit = JSON.parse(JSON.stringify(websites));
+      sortArrDeclineProfit.sort((a, b) => b.costOfTheSite - a.costOfTheSite);
+      const outputSortArrDeclineProfit = sortArrDeclineProfit.map((website) =>
+        JSON.stringify(website, null, 2)
+      );
+      //============================================================================================================
+      //7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+      let sitesListLess10000 = [];
+      let sitesListGreater10000 = [];
+      for (const site of websites) {
+        if (site.costOfTheSite < 10000)
+          sitesListLess10000.push(JSON.parse(JSON.stringify(site)));
+        else if (site.costOfTheSite > 1000)
+          sitesListGreater10000.push(JSON.parse(JSON.stringify(site)));
+      }
+      const outputSitesListLess10000 = sitesListLess10000.map((website) =>
+        JSON.stringify(website, null, 2)
+      );
+      const outputSitesListGreater10000 = sitesListGreater10000.map((website) =>
+        JSON.stringify(website, null, 2)
+      );
+
+      document.write(`
+        1) Загальна вартість усіх сайтів = ${totalCostAllWebsites}<br>
+        2) кількість сайтів, що було зроблено між 2000 та 2009 рр. = ${countWebsitesReleasedBegin2000Add2009}<br>
+        3) кількість сайтів, де сума спонсорських вкладень була більшою за 10000 = ${countWebsitesWhereAmountOfInvestmentsMore10000}<br>
+        4) загальний список усіх спонсорів = <pre>${sponsorData.join(
+          "\n"
+        )}</pre><br>
+        5) Рік, коли прибуток був найбільшим = ${yearWhenProdWasMax(
+          websites
+        )}<br>
+        6) Впорядкуваний список за спаданням прибутку = <pre>${outputSortArrDeclineProfit.join(
+          "\n"
+        )}</pre><br>
+        7) 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000<br><br>
+        сайти з вартість до 10000 <br><pre>
+        ${outputSitesListLess10000.join("\n")}</pre><br>
+        сайти з вартістю більше 10000<br><pre>
+        ${outputSitesListGreater10000.join("\n")}</pre>
+        `);
+    </script>
+  </body>
+</html>
